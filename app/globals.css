@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Mode */
+  --background: #F5F5F5;
+  --foreground: #000000;
+  --foreground-rgb: 0, 0, 0;
+  --card: #FFFFFF;
+  --muted: #666666;
+  --accent-purple: #8B5CF6;
+  --accent-blue: #3B82F6;
+}
+
+.dark {
+  /* Dark Mode */
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
+  --foreground-rgb: 255, 255, 255;
+  --card: #0F0F0F;
+  --muted: #888888;
+}
+
+.noise::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  filter: contrast(150%) brightness(100%);
+}
+
+.bg-radial-gradient {
+  background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-blue: var(--accent-blue);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --font-size-hero: clamp(5rem, 15vw, 13rem);
+  --font-size-section: clamp(2.5rem, 6vw, 4.5rem);
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply w-full max-w-[2000px] mx-auto px-6 md:px-12 lg:px-24;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
 }

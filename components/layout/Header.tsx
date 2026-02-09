@@ -1,0 +1,73 @@
+'use client'
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import { Menu } from 'lucide-react'
+import { ThemeToggle } from '@/components/ui/ThemeToggle'
+import { motion } from 'framer-motion'
+import MenuOverlay from './MenuOverlay'
+
+export default function Header() {
+    const [scrolled, setScrolled] = useState(false)
+    const [mounted, setMounted] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20)
+        }
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
+    if (!mounted) return null
+
+    return (
+        <>
+            <header
+                className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-xl border-b border-muted/10 py-4' : 'bg-transparent py-8'
+                    }`}
+            >
+                <div className="container-custom flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                        <div className="relative w-10 h-10 overflow-hidden rounded-lg bg-card border border-muted/20">
+                            <Image
+                                src="/images/logo.png"
+                                alt="PTH Logo"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-sm font-bold tracking-tight">Pham Trung Hieu</span>
+                            <span className="text-[10px] text-muted uppercase font-medium tracking-wider">Senior Software Engineer</span>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center gap-4 md:gap-8">
+                        <ThemeToggle />
+
+                        <motion.a
+                            href="#contact"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="hidden md:flex items-center gap-2 px-6 py-2.5 bg-foreground text-background rounded-full text-sm font-black lowercase tracking-tight hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300"
+                        >
+                            say hello
+                            <span className="text-xl leading-none">👋</span>
+                        </motion.a>
+
+                        <button
+                            onClick={() => setMenuOpen(true)}
+                            className="p-2 hover:bg-muted/10 rounded-full transition-colors"
+                        >
+                            <Menu size={24} />
+                        </button>
+                    </div>
+                </div>
+            </header>
+            <MenuOverlay isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+        </>
+    )
+}

@@ -2,12 +2,13 @@
 import { motion } from 'framer-motion'
 import { ArrowUp, Github, Linkedin, Facebook } from 'lucide-react'
 import Link from 'next/link'
+import TransitionLink from '@/components/ui/TransitionLink'
 import { useSpotlight } from '@/hooks/useSpotlight'
 
 const footerLinks = [
     { label: 'Home', href: '/' },
-    { label: 'About me', href: '/about' },
-    { label: 'Works', href: '/works', badge: '+30' },
+    { label: 'About me', href: '/about-me' },
+    { label: 'Works', href: '/workfolio', badge: '+30' },
     { label: 'Contact', href: '/contact' },
 ]
 
@@ -93,7 +94,7 @@ export default function Footer() {
                         <h4 className="text-xs uppercase tracking-widest text-muted font-bold">Navigation</h4>
                         <nav className="flex flex-col space-y-4">
                             {footerLinks.map((link) => (
-                                <Link
+                                <TransitionLink
                                     key={link.href}
                                     href={link.href}
                                     className="text-3xl md:text-4xl font-bold tracking-tight inline-flex items-center gap-3 w-fit transition-colors hover:text-muted"
@@ -104,7 +105,7 @@ export default function Footer() {
                                             {link.badge}
                                         </span>
                                     )}
-                                </Link>
+                                </TransitionLink>
                             ))}
                         </nav>
                     </div>

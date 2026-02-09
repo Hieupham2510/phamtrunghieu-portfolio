@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import TypewriterText from '@/components/ui/TypewriterText';
 
 const ROLES = [
     "Product Designer",
@@ -10,48 +10,6 @@ const ROLES = [
     "Mobile Engineer",
     "Creative Developer"
 ];
-
-const TypewriterText = () => {
-    const [text, setText] = useState("");
-    const [isDeleting, setIsDeleting] = useState(false);
-    const [loopNum, setLoopNum] = useState(0);
-    const [typingSpeed, setTypingSpeed] = useState(150);
-
-    useEffect(() => {
-        const handleTyping = () => {
-            const i = loopNum % ROLES.length;
-            const fullText = ROLES[i];
-
-            setText(isDeleting
-                ? fullText.substring(0, text.length - 1)
-                : fullText.substring(0, text.length + 1)
-            );
-
-            setTypingSpeed(isDeleting ? 50 : 150);
-
-            if (!isDeleting && text === fullText) {
-                setTimeout(() => setIsDeleting(true), 1500); // Pause at end
-            } else if (isDeleting && text === "") {
-                setIsDeleting(false);
-                setLoopNum(loopNum + 1);
-            }
-        };
-
-        const timer = setTimeout(handleTyping, typingSpeed);
-        return () => clearTimeout(timer);
-    }, [text, isDeleting, loopNum, typingSpeed]);
-
-    return (
-        <span className="inline-flex items-center">
-            {text}
-            <motion.span
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ duration: 0.8, repeat: Infinity }}
-                className="ml-1 inline-block w-3 h-1 md:w-5 md:h-[6px] bg-foreground"
-            />
-        </span>
-    );
-};
 
 export default function AboutBrief() {
     return (
@@ -72,7 +30,7 @@ export default function AboutBrief() {
 
                         {/* Typewriter Role - Massive */}
                         <div className="text-[10vw] md:text-[6vw] font-black leading-[0.9] tracking-tighter uppercase text-accent-purple whitespace-nowrap">
-                            <TypewriterText />
+                            <TypewriterText words={ROLES} />
                         </div>
 
                         {/* Heading */}

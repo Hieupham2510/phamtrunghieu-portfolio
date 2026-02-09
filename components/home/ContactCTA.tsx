@@ -19,7 +19,7 @@ export default function ContactCTA() {
     const rotate = useTransform(scrollYProgress, [0, 1], [-10, 10]);
 
     return (
-        <section ref={containerRef} className="relative py-24 md:py-32 overflow-hidden bg-background">
+        <section ref={containerRef} className="relative section-padding overflow-hidden bg-background">
 
             {/* Background Marquee - Subtle & Huge */}
             <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full select-none pointer-events-none opacity-[0.03]">

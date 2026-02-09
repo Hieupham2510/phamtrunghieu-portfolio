@@ -8,19 +8,94 @@ export default function PageLoader() {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setProgress((prev) => {
-                if (prev >= 100) {
-                    clearInterval(interval)
-                    setTimeout(() => setIsLoading(false), 500)
-                    return 100
-                }
-                const increment = Math.floor(Math.random() * 15) + 5
-                return Math.min(prev + increment, 100)
-            })
-        }, 150)
+        // Check if page is already loaded
+        const isComplete = typeof document !== 'undefined' && document.readyState === 'complete'
+        
+        if (isComplete) {
+            setProgress(100)
+            setTimeout(() => setIsLoading(false), 500)
+            return
+        }
 
-        return () => clearInterval(interval)
+        let currentProgress = 0
+
+        // Simulate initial quick load (DOM parsing)
+        const initialInterval = setInterval(() => {
+            currentProgress += Math.random() * 10 + 5
+            if (currentProgress >= 60) {
+                currentProgress = 60
+                clearInterval(initialInterval)
+            }
+            setProgress(Math.min(currentProgress, 60))
+        }, 100)
+
+        // Track actual images and resources
+        const images = Array.from(document.images)
+        const totalResources = images.length || 1
+        let loadedResources = 0
+
+        const updateProgress = () => {
+            loadedResources++
+            // Map loaded resources to 60-90% range
+            const resourceProgress = 60 + (loadedResources / totalResources) * 30
+            currentProgress = Math.max(currentProgress, resourceProgress)
+            setProgress(Math.min(currentProgress, 90))
+        }
+
+        // Monitor image loading
+        images.forEach((img) => {
+            if (img.complete) {
+                updateProgress()
+            } else {
+                img.addEventListener('load', updateProgress)
+                img.addEventListener('error', updateProgress) // Count errors as loaded to prevent hanging
+            }
+        })
+
+        // Listen for full page load
+        const handleLoad = () => {
+            clearInterval(initialInterval)
+            // Quick ramp to 100%
+            const finalInterval = setInterval(() => {
+                currentProgress += 5
+                if (currentProgress >= 100) {
+                    currentProgress = 100
+                    clearInterval(finalInterval)
+                    setProgress(100)
+                    setTimeout(() => setIsLoading(false), 500)
+                } else {
+                    setProgress(currentProgress)
+                }
+            }, 50)
+        }
+
+        // Check if already complete, otherwise add listener
+        if (typeof window !== 'undefined') {
+            if (document.readyState === 'complete') {
+                handleLoad()
+            } else {
+                window.addEventListener('load', handleLoad)
+            }
+        }
+
+        // Fallback: force complete after 5 seconds to prevent infinite loading
+        const fallbackTimer = setTimeout(() => {
+            clearInterval(initialInterval)
+            setProgress(100)
+            setTimeout(() => setIsLoading(false), 500)
+        }, 5000)
+
+        return () => {
+            clearInterval(initialInterval)
+            clearTimeout(fallbackTimer)
+            if (typeof window !== 'undefined') {
+                window.removeEventListener('load', handleLoad)
+            }
+            images.forEach((img) => {
+                img.removeEventListener('load', updateProgress)
+                img.removeEventListener('error', updateProgress)
+            })
+        }
     }, [])
 
     return (

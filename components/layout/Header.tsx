@@ -4,12 +4,14 @@ import Image from 'next/image'
 import { Menu } from 'lucide-react'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { motion } from 'framer-motion'
+import { useTransition } from '@/contexts/TransitionContext'
 import MenuOverlay from './MenuOverlay'
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false)
     const [mounted, setMounted] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
+    const { navigate } = useTransition()
 
     useEffect(() => {
         setMounted(true)
@@ -19,6 +21,12 @@ export default function Header() {
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
+
+    const handleContactClick = (e: React.MouseEvent) => {
+        e.preventDefault()
+        console.log('[Header] Contact button clicked')
+        navigate('/contact')
+    }
 
     if (!mounted) return null
 
@@ -49,7 +57,8 @@ export default function Header() {
                         <ThemeToggle />
 
                         <motion.a
-                            href="#contact"
+                            href="/contact"
+                            onClick={handleContactClick}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             className="hidden md:flex items-center gap-2 px-6 py-2.5 bg-foreground text-background rounded-full text-sm font-black lowercase tracking-tight hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300"

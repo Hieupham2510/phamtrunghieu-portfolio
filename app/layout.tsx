@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers";
+import { TransitionProvider } from "@/contexts/TransitionContext";
 import CustomCursor from "@/components/ui/CustomCursor";
+import RouteTransition from "@/components/animations/RouteTransition";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -104,8 +106,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <CustomCursor />
-          {children}
+          <TransitionProvider>
+            <CustomCursor />
+            <RouteTransition />
+            {children}
+          </TransitionProvider>
         </ThemeProvider>
       </body>
     </html>

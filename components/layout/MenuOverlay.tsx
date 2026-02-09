@@ -1,15 +1,17 @@
+'use client'
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import Link from 'next/link'
+import TransitionLink from '@/components/ui/TransitionLink'
 import { useSpotlight } from '@/hooks/useSpotlight'
 import AnalogClock from '@/components/ui/AnalogClock'
 
 const menuItems = [
     { label: 'Home', href: '/' },
-    { label: 'About me', href: '/about' },
-    { label: 'Works', href: '#projects', badge: '+10' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'About me', href: '/about-me' },
+    { label: 'Works', href: '/workfolio', badge: '+30' },
+    { label: 'Contact', href: '/contact' },
 ]
 
 const menuListVariants = {
@@ -153,7 +155,7 @@ export default function MenuOverlay({ isOpen, onClose }: { isOpen: boolean, onCl
                                             key={item.href}
                                             variants={menuItemVariants}
                                         >
-                                            <Link
+                                            <TransitionLink
                                                 href={item.href}
                                                 onClick={onClose}
                                                 className="group flex items-center gap-8 text-6xl md:text-8xl lg:text-9xl font-black lowercase tracking-tighter"
@@ -161,7 +163,7 @@ export default function MenuOverlay({ isOpen, onClose }: { isOpen: boolean, onCl
                                                 <span className="text-muted/20 group-hover:text-foreground transition-colors duration-500">
                                                     <AnimatedWord label={item.label} />
                                                 </span>
-                                            </Link>
+                                            </TransitionLink>
                                         </motion.div>
                                     ))}
                                 </motion.nav>

@@ -3,8 +3,6 @@ import { motion } from 'framer-motion';
 import { MARQUEE_ITEMS } from '@/lib/mock-data';
 
 export default function SkillMarquee() {
-    // Duplicate the items enough times to ensure seamless scrolling
-    // If text is short, we might need 4 duplicates. With current length, 2 is plenty, but let's do 4 for safety on huge screens.
     const marqueeContent = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
 
     return (
@@ -30,16 +28,6 @@ export default function SkillMarquee() {
                 </motion.div>
             </div>
 
-            <style jsx>{`
-                .stroke-text {
-                    -webkit-text-stroke: 1px rgba(var(--foreground-rgb), 0.2);
-                    color: transparent;
-                }
-                .stroke-text:hover {
-                    -webkit-text-stroke: 1px rgba(var(--foreground-rgb), 1);
-                     color: rgba(var(--foreground-rgb), 1);
-                }
-            `}</style>
         </section>
     );
 }

@@ -9,19 +9,14 @@ export const metadata: Metadata = {
         "Projects by Pham Trung Hieu — case studies and product challenges designed, built, and shipped.",
 };
 
+import WorkfolioGrid from "@/components/workfolio/WorkfolioGrid";
+
 export default function WorkfolioPage() {
     return (
         <>
             <Header />
             <main className="overflow-clip min-h-screen">
-                <section className="container-custom section-padding pt-32">
-                    <h1 className="text-[12vw] lg:text-[7vw] font-bold leading-[0.9] tracking-tighter text-foreground mb-6">
-                        Projects
-                    </h1>
-                    <p className="text-muted text-lg md:text-xl max-w-2xl">
-                        Danh sách dự án & case studies — đang được xây dựng. (Phase 3)
-                    </p>
-                </section>
+                <WorkfolioGrid />
                 <ContactCTA />
             </main>
             <Footer />

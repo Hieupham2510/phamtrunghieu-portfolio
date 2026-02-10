@@ -90,4 +90,14 @@
   .section-padding {
     @apply py-20 md:py-32;
   }
+
+  .stroke-text {
+    -webkit-text-stroke: 1px rgba(var(--foreground-rgb), 0.2);
+    color: transparent;
+  }
+
+  .stroke-text:hover {
+    -webkit-text-stroke: 1px rgba(var(--foreground-rgb), 1);
+    color: rgba(var(--foreground-rgb), 1);
+  }
 }

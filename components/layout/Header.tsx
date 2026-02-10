@@ -1,17 +1,21 @@
 'use client'
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { Menu } from 'lucide-react'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { motion } from 'framer-motion'
 import { useTransition } from '@/contexts/TransitionContext'
 import MenuOverlay from './MenuOverlay'
+import TransitionLink from '@/components/ui/TransitionLink'
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false)
     const [mounted, setMounted] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
     const { navigate } = useTransition()
+    const pathname = usePathname()
 
     useEffect(() => {
         setMounted(true)
@@ -38,7 +42,7 @@ export default function Header() {
             >
                 <div className="container-custom flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <div className="relative w-10 h-10 overflow-hidden rounded-lg bg-card border border-muted/20">
+                        <TransitionLink href="/" className="relative w-10 h-10 overflow-hidden rounded-lg bg-card border border-muted/20 block">
                             <Image
                                 src="/images/logo.png"
                                 alt="PTH Logo"
@@ -46,12 +50,40 @@ export default function Header() {
                                 className="object-contain"
                                 priority
                             />
-                        </div>
+                        </TransitionLink>
                         <div className="flex flex-col">
                             <span className="text-sm font-bold tracking-tight">Pham Trung Hieu</span>
                             <span className="text-[10px] text-muted uppercase font-medium tracking-wider">Senior Software Engineer</span>
                         </div>
                     </div>
+
+                    {/* Desktop Navigation */}
+                    <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+                        {[
+                            { label: 'About', href: '/about-me' },
+                            { label: 'Works', href: '/workfolio' }
+                        ].map((link) => {
+                            const isActive = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
+                            return (
+                                <TransitionLink
+                                    key={link.href}
+                                    href={link.href}
+                                    className={`text-sm font-bold tracking-tight transition-colors hover:text-foreground relative group ${isActive ? 'text-foreground' : 'text-muted'}`}
+                                >
+                                    {link.label}
+                                    {isActive && (
+                                        <motion.span
+                                            layoutId="activeNav"
+                                            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent-purple rounded-full"
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ duration: 0.3 }}
+                                        />
+                                    )}
+                                </TransitionLink>
+                            )
+                        })}
+                    </nav>
 
                     <div className="flex items-center gap-4 md:gap-8">
                         <ThemeToggle />

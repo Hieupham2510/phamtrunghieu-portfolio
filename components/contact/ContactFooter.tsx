@@ -12,6 +12,7 @@ export default function ContactFooter() {
                         src="/images/contact/pth-Illustration.png"
                         alt="Contact Illustration"
                         fill
+                        sizes="100vw"
                         className="object-cover object-center"
                         priority
                     />

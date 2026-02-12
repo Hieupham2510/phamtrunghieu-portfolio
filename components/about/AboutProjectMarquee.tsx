@@ -48,6 +48,7 @@ export default function AboutProjectMarquee() {
                     src="/images/aboutMe/download.png"
                     alt={resumeCtaText}
                     fill
+                    sizes="(max-width: 768px) 48px, 64px"
                     className="object-contain"
                 />
             </div>

@@ -44,15 +44,15 @@ export default function ContactCTA() {
 
                     {/* Floating 3D Assets */}
                     <motion.div style={{ y: yMail, rotate: -15 }} className="absolute -left-4 md:left-20 top-20 w-24 h-24 md:w-32 md:h-32 opacity-80">
-                        <Image src="/images/cta/mail-icon.png" alt="Mail" fill className="object-contain" />
+                        <Image src="/images/cta/mail-icon.png" alt="Mail" fill sizes="(max-width: 768px) 96px, 128px" className="object-contain" />
                     </motion.div>
 
                     <motion.div style={{ y: yHeart, rotate: 15 }} className="absolute -right-4 md:right-32 top-10 w-20 h-20 md:w-28 md:h-28 opacity-80">
-                        <Image src="/images/cta/heart-icon.png" alt="Heart" fill className="object-contain" />
+                        <Image src="/images/cta/heart-icon.png" alt="Heart" fill sizes="(max-width: 768px) 80px, 112px" className="object-contain" />
                     </motion.div>
 
                     <motion.div style={{ y: yAstronaut }} className="absolute right-10 bottom-10 md:-right-0 md:bottom-0 w-32 h-32 md:w-48 md:h-48 opacity-90 hidden md:block">
-                        <Image src="/images/cta/astronaut.png" alt="Astronaut" fill className="object-contain" />
+                        <Image src="/images/cta/astronaut.png" alt="Astronaut" fill sizes="(max-width: 768px) 128px, 192px" className="object-contain" />
                     </motion.div>
 
 

@@ -29,6 +29,7 @@ export default function WorkfolioGrid() {
                                     src="/images/workfolio/workfolio-heading.png"
                                     alt="Projects Icon"
                                     fill
+                                    sizes="(max-width: 768px) 48px, 64px"
                                     className="object-contain"
                                 />
                             </div>

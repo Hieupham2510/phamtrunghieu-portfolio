@@ -33,6 +33,7 @@ export default function VisualBreak() {
                                 src="/images/visualBreak/lifestyle.png"
                                 alt="Lifestyle Visual"
                                 fill
+                                sizes="(max-width: 768px) 100vw, 80vw"
                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                                 unoptimized
                             />
@@ -68,6 +69,7 @@ export default function VisualBreak() {
                                     src="/images/visualBreak/badge.png"
                                     alt="Logo"
                                     fill
+                                    sizes="(max-width: 768px) 48px, 64px"
                                     className="object-contain"
                                 />
                             </div>

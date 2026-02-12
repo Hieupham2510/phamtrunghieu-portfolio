@@ -47,6 +47,7 @@ export default function Header() {
                                 src="/images/logo.png"
                                 alt="PTH Logo"
                                 fill
+                                sizes="40px"
                                 className="object-contain"
                                 priority
                             />

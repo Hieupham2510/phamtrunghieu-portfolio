@@ -72,6 +72,7 @@ export default function Hero() {
                                         src="/images/hero-character.jpg"
                                         alt="Pham Trung Hieu Character"
                                         fill
+                                        sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 500px"
                                         className="object-cover object-top"
                                         priority
                                     />

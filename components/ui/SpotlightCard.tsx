@@ -22,6 +22,7 @@ export const SpotlightCard = ({ children, className = "", glowColor = "rgba(120,
         <div
             onMouseMove={handleMouseMove}
             className={`group relative rounded-2xl border border-muted/10 bg-background overflow-hidden ${className}`}
+            style={{ position: 'relative' }}
         >
             <motion.div
                 className="pointer-events-none absolute -inset-px rounded-2xl transition duration-300 opacity-0 group-hover:opacity-100"

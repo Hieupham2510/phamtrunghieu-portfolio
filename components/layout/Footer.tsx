@@ -73,6 +73,7 @@ export default function Footer() {
         <footer
             onMouseMove={handleMouseMove}
             className="group relative mt-20 pt-20 pb-12 bg-card rounded-t-[3rem] overflow-hidden border-t border-muted/10"
+            style={{ position: 'relative' }}
         >
             {/* Full-section Spotlight */}
             <motion.div

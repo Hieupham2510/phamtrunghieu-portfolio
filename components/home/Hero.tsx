@@ -129,7 +129,7 @@ export default function Hero() {
                     {skills.map((skill) => (
                         <span
                             key={skill}
-                            className="px-4 py-2 border border-muted/10 dark:border-white/5 rounded-full text-xs md:text-sm font-semibold hover:bg-foreground hover:text-background transition-all duration-500 cursor-default select-none bg-card/40 backdrop-blur-md text-muted hover:text-foreground"
+                            className="px-4 py-2 border border-muted/10 dark:border-white/5 rounded-full text-xs md:text-sm font-semibold hover:bg-foreground hover:text-background transition-all duration-500 cursor-default select-none bg-card/40 backdrop-blur-md text-muted hover:text-primary"
                         >
                             {skill}
                         </span>

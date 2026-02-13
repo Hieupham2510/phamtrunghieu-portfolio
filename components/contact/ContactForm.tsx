@@ -49,7 +49,7 @@ export default function ContactForm() {
                                 onChange={handleChange}
                                 placeholder="Your name*"
                                 required
-                                className="w-full bg-transparent border-b border-white/20 py-4 text-xl text-white outline-none focus:border-[#907CFF] transition-colors placeholder:text-white/40"
+                                className="w-full bg-transparent border-b border-foreground/20 py-4 text-xl text-foreground outline-none focus:border-accent-purple transition-colors placeholder:text-muted"
                             />
                         </div>
 
@@ -61,7 +61,7 @@ export default function ContactForm() {
                                 value={formData.company}
                                 onChange={handleChange}
                                 placeholder="Company name"
-                                className="w-full bg-transparent border-b border-white/20 py-4 text-xl text-white outline-none focus:border-[#907CFF] transition-colors placeholder:text-white/40"
+                                className="w-full bg-transparent border-b border-foreground/20 py-4 text-xl text-foreground outline-none focus:border-accent-purple transition-colors placeholder:text-muted"
                             />
                         </div>
 
@@ -74,7 +74,7 @@ export default function ContactForm() {
                                 onChange={handleChange}
                                 placeholder="Email*"
                                 required
-                                className="w-full bg-transparent border-b border-white/20 py-4 text-xl text-white outline-none focus:border-[#907CFF] transition-colors placeholder:text-white/40"
+                                className="w-full bg-transparent border-b border-foreground/20 py-4 text-xl text-foreground outline-none focus:border-accent-purple transition-colors placeholder:text-muted"
                             />
                         </div>
 
@@ -87,7 +87,7 @@ export default function ContactForm() {
                                 onChange={handleChange}
                                 placeholder="Phone number*"
                                 required
-                                className="w-full bg-transparent border-b border-white/20 py-4 text-xl text-white outline-none focus:border-[#907CFF] transition-colors placeholder:text-white/40"
+                                className="w-full bg-transparent border-b border-foreground/20 py-4 text-xl text-foreground outline-none focus:border-accent-purple transition-colors placeholder:text-muted"
                             />
                         </div>
                     </div>
@@ -101,17 +101,17 @@ export default function ContactForm() {
                             placeholder="Project details*"
                             required
                             rows={4}
-                            className="w-full bg-transparent border-b border-white/20 py-4 text-xl text-white outline-none focus:border-[#907CFF] transition-colors placeholder:text-white/40 resize-none"
+                            className="w-full bg-transparent border-b border-foreground/20 py-4 text-xl text-foreground outline-none focus:border-accent-purple transition-colors placeholder:text-muted resize-none"
                         />
                     </div>
 
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="group flex items-center gap-4 text-white text-xl font-medium hover:text-[#907CFF] transition-colors"
+                        className="group flex items-center gap-4 text-foreground text-xl font-medium hover:text-accent-purple transition-colors"
                     >
-                        <span className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#907CFF] transition-colors duration-300">
-                            <ArrowRight className="w-6 h-6 text-white transform group-hover:-rotate-45 transition-transform duration-300" />
+                        <span className="w-16 h-16 rounded-full bg-foreground/10 flex items-center justify-center group-hover:bg-accent-purple transition-colors duration-300">
+                            <ArrowRight className="w-6 h-6 text-foreground group-hover:text-white transform group-hover:-rotate-45 transition-transform duration-300" />
                         </span>
                         Submit Inquiry
                     </button>

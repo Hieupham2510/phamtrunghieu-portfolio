@@ -100,4 +100,10 @@
     -webkit-text-stroke: 1px rgba(var(--foreground-rgb), 1);
     color: rgba(var(--foreground-rgb), 1);
   }
+
+  .pixel-text {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace;
+    letter-spacing: 0.05em;
+    text-shadow: 2px 2px 0px rgba(139, 92, 246, 0.3);
+  }
 }

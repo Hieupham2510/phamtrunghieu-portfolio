@@ -64,15 +64,15 @@ export default function AboutBrief() {
                                 transition={{ delay: 0.4 }}
                                 className="flex flex-wrap gap-6 items-center"
                             >
-                                <a
+                                {/* <a
                                     href="/resume.pdf"
                                     className="group flex items-center gap-3 px-8 py-4 bg-foreground text-background rounded-full font-bold uppercase tracking-wider hover:bg-muted transition-colors text-sm md:text-base"
                                 >
                                     <ArrowDown size={18} className="group-hover:translate-y-1 transition-transform" />
                                     Download Resume
-                                </a>
+                                </a> */}
                                 <Link
-                                    href="/about"
+                                    href="/about-me"
                                     className="text-base md:text-lg font-bold uppercase tracking-wider underline decoration-muted/30 underline-offset-8 hover:decoration-foreground transition-all"
                                 >
                                     More about me

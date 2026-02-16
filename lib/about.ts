@@ -1,6 +1,3 @@
-/**
- * About Me page content (reference: jayantsharma.com/about-me)
- */
 
 export const ABOUT_INTRO = {
   roleTags: [

@@ -32,13 +32,13 @@ export default function AboutProjectMarquee() {
             >
                 <svg viewBox="0 0 100 100" className="w-full h-full p-2">
                     <path
-                        id="aboutMarqueeCirclePath"
+                        id="circlePath"
                         d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
                         fill="none"
                     />
-                    <text className="text-[11px] font-bold uppercase tracking-[2px] fill-white dark:fill-foreground">
-                        <textPath href="#aboutMarqueeCirclePath" startOffset="0%">
-                            {resumeCtaText} •
+                    <text className="text-[11px] font-bold uppercase tracking-[2px] fill-white">
+                        <textPath href="#circlePath" startOffset="0%">
+                            Let's start new project •
                         </textPath>
                     </text>
                 </svg>

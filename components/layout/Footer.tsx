@@ -1,8 +1,9 @@
 'use client'
 import { motion } from 'framer-motion'
-import { ArrowUp, Github, Linkedin, Facebook } from 'lucide-react'
+import { ArrowUp, Github, Linkedin } from 'lucide-react'
 import Link from 'next/link'
 import TransitionLink from '@/components/ui/TransitionLink'
+import AnimatedWord from '@/components/ui/AnimatedWord'
 import { useSpotlight } from '@/hooks/useSpotlight'
 
 const footerLinks = [
@@ -12,55 +13,7 @@ const footerLinks = [
     { label: 'Contact', href: '/contact' },
 ]
 
-const AnimatedWord = ({ label }: { label: string }) => {
-    return (
-        <motion.div
-            className="relative overflow-hidden inline-block"
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-        >
-            <div className="flex">
-                {label.split("").map((char, i) => (
-                    <motion.span
-                        key={i}
-                        variants={{
-                            rest: { y: 0 },
-                            hover: { y: "-100%" }
-                        }}
-                        transition={{
-                            duration: 0.5,
-                            ease: [0.6, 0.01, -0.05, 0.95] as any,
-                            delay: i * 0.02
-                        }}
-                        className="inline-block"
-                    >
-                        {char === " " ? "\u00A0" : char}
-                    </motion.span>
-                ))}
-            </div>
-            <div className="flex absolute top-full left-0">
-                {label.split("").map((char, i) => (
-                    <motion.span
-                        key={i}
-                        variants={{
-                            rest: { y: 0 },
-                            hover: { y: "-100%" }
-                        }}
-                        transition={{
-                            duration: 0.5,
-                            ease: [0.6, 0.01, -0.05, 0.95] as any,
-                            delay: i * 0.02
-                        }}
-                        className="inline-block"
-                    >
-                        {char === " " ? "\u00A0" : char}
-                    </motion.span>
-                ))}
-            </div>
-        </motion.div>
-    )
-}
+
 
 export default function Footer() {
     const { spotlightBackground, handleMouseMove } = useSpotlight(800, 'rgba(120, 119, 198, 0.4)')
@@ -119,8 +72,8 @@ export default function Footer() {
                                 className="p-6 bg-background/50 backdrop-blur-sm border border-muted/10 rounded-2xl space-y-1"
                             >
                                 <p className="text-[10px] uppercase font-bold text-muted tracking-wider">Email</p>
-                                <a href="mailto:hello@phamtrunghieu.com" className="text-lg font-bold hover:text-muted transition-colors">
-                                    hello@phamtrunghieu.com
+                                <a href="mailto:hieupham2510tn@gmail.com" className="text-lg font-bold hover:text-muted transition-colors">
+                                    hieupham2510tn@gmail.com
                                 </a>
                             </motion.div>
                             <motion.div
@@ -141,9 +94,8 @@ export default function Footer() {
                             <h4 className="text-xs uppercase tracking-widest text-muted font-bold">Follow me</h4>
                             <div className="flex gap-4">
                                 {[
-                                    { icon: <Linkedin size={20} />, href: "#" },
-                                    { icon: <Github size={20} />, href: "#" },
-                                    { icon: <Facebook size={20} />, href: "#" }
+                                    { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/hieu-trung-pham-3999a2245/" },
+                                    { icon: <Github size={20} />, href: "https://github.com/Hieupham2510" },
                                 ].map((social, idx) => (
                                     <Link
                                         key={idx}

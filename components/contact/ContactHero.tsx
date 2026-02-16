@@ -21,10 +21,10 @@ export default function ContactHero() {
                     </h1>
 
                     <a
-                        href="mailto:hieupham2510@gmail.com"
+                        href="mailto:hieupham2510tn@gmail.com"
                         className="group inline-flex items-center gap-2 text-2xl md:text-4xl font-medium text-foreground hover:text-accent-purple transition-colors"
                     >
-                        hieupham2510@gmail.com
+                        hieupham2510tn@gmail.com
                         <ArrowUpRight className="w-6 h-6 md:w-10 md:h-10 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                     </a>
 

@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "Pham Trung Hieu | Senior Software Engineer",
     description: "Senior Software Engineer specializing in React, Next.js, TypeScript, and scalable web applications.",
     images: ["/opengraph-image"],
-    creator: "@phamtrunghieu",
+    creator: "@Hieupham2510",
   },
   robots: {
     index: true,
@@ -75,8 +75,8 @@ export default function RootLayout({
     jobTitle: 'Senior Software Engineer',
     url: 'https://phamtrunghieu.com',
     sameAs: [
-      'https://github.com/phamtrunghieu',
-      'https://linkedin.com/in/phamtrunghieu',
+      'https://github.com/Hieupham2510',
+      'https://www.linkedin.com/in/hieu-trung-pham-3999a2245/',
     ],
     knowsAbout: [
       'React',

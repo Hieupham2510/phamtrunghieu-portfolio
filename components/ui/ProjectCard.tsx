@@ -88,7 +88,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 </div>
 
                 {/* Platform Links */}
-                <div className="flex items-center gap-4 mt-2">
+                {/* <div className="flex items-center gap-4 mt-2">
                     {links.web && (
                         <a
                             href={links.web}
@@ -122,7 +122,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                             <span>iOS</span>
                         </a>
                     )}
-                </div>
+                </div> */}
             </div>
         </motion.div>
     );

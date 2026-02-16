@@ -51,6 +51,23 @@ export default function WorkfolioGrid() {
                         </motion.div>
                     ))}
                 </Masonry>
+
+                {/* Subtle "More to come" Footer */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className="mt-32 mb-16 flex flex-col items-center justify-center text-center space-y-4"
+                >
+                    <div className="h-px w-12 bg-muted/20" />
+                    <p className="text-sm md:text-base text-muted font-medium tracking-[0.3em] uppercase opacity-60">
+                        And much, much more to come
+                    </p>
+                    <p className="text-[10px] md:text-xs text-muted/40 font-bold uppercase tracking-widest">
+                        Stay tuned for upcoming projects and experiments
+                    </p>
+                </motion.div>
             </div>
         </section>
     )

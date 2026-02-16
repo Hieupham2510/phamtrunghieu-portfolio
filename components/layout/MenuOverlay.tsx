@@ -3,7 +3,9 @@ import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import TransitionLink from '@/components/ui/TransitionLink'
+import AnimatedWord from '@/components/ui/AnimatedWord'
 import { useSpotlight } from '@/hooks/useSpotlight'
 import AnalogClock from '@/components/ui/AnalogClock'
 
@@ -52,55 +54,7 @@ const menuItemVariants = {
     }
 }
 
-const AnimatedWord = ({ label }: { label: string }) => {
-    return (
-        <motion.div
-            className="relative overflow-hidden inline-block"
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-        >
-            <div className="flex">
-                {label.split("").map((char, i) => (
-                    <motion.span
-                        key={i}
-                        variants={{
-                            rest: { y: 0 },
-                            hover: { y: "-100%" }
-                        }}
-                        transition={{
-                            duration: 0.5,
-                            ease: [0.6, 0.01, -0.05, 0.95] as any,
-                            delay: i * 0.02
-                        }}
-                        className="inline-block"
-                    >
-                        {char === " " ? "\u00A0" : char}
-                    </motion.span>
-                ))}
-            </div>
-            <div className="flex absolute top-full left-0">
-                {label.split("").map((char, i) => (
-                    <motion.span
-                        key={i}
-                        variants={{
-                            rest: { y: 0 },
-                            hover: { y: "-100%" }
-                        }}
-                        transition={{
-                            duration: 0.5,
-                            ease: [0.6, 0.01, -0.05, 0.95] as any,
-                            delay: i * 0.02
-                        }}
-                        className="inline-block"
-                    >
-                        {char === " " ? "\u00A0" : char}
-                    </motion.span>
-                ))}
-            </div>
-        </motion.div>
-    )
-}
+
 
 
 export default function MenuOverlay({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) {
@@ -128,7 +82,15 @@ export default function MenuOverlay({ isOpen, onClose }: { isOpen: boolean, onCl
                         <div className="absolute top-12 left-6 md:left-12 lg:left-24 flex items-center gap-4">
                             {/* Branding in Menu */}
                             <div className="flex items-center gap-3">
-                                <div className="h-8 w-8 rounded-full bg-foreground flex items-center justify-center text-background font-black text-xs">P</div>
+                                <div className="h-8 w-8 relative flex items-center justify-center">
+                                    <Image
+                                        src="/images/logo.png"
+                                        alt="Logo"
+                                        fill
+                                        className="object-contain"
+                                        sizes="32px"
+                                    />
+                                </div>
                                 <span className="text-xs font-black uppercase tracking-[0.2em] text-foreground">Menu</span>
                             </div>
                         </div>
@@ -158,7 +120,7 @@ export default function MenuOverlay({ isOpen, onClose }: { isOpen: boolean, onCl
                                             <TransitionLink
                                                 href={item.href}
                                                 onClick={onClose}
-                                                className="group flex items-center gap-8 text-6xl md:text-8xl lg:text-9xl font-black lowercase tracking-tighter"
+                                                className="group flex items-center gap-8 text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter"
                                             >
                                                 <span className="text-muted/20 group-hover:text-foreground transition-colors duration-500">
                                                     <AnimatedWord label={item.label} />
@@ -186,8 +148,8 @@ export default function MenuOverlay({ isOpen, onClose }: { isOpen: boolean, onCl
                                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-green-500">Available for freelance</span>
                                     </div>
                                     <h4 className="text-2xl font-bold text-foreground">Let&apos;s build something great together.</h4>
-                                    <a href="mailto:hello@phamtrunghieu.com" className="text-muted hover:text-foreground transition-colors font-medium border-b border-muted/20 w-fit pb-1">
-                                        hello@phamtrunghieu.com
+                                    <a href="mailto:hieupham2510tn@gmail.com" className="text-muted hover:text-foreground transition-colors font-medium border-b border-muted/20 w-fit pb-1">
+                                        hieupham2510tn@gmail.com
                                     </a>
                                 </motion.div>
 
@@ -217,13 +179,16 @@ export default function MenuOverlay({ isOpen, onClose }: { isOpen: boolean, onCl
                                 >
                                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-muted/60">Socials</span>
                                     <div className="flex flex-col gap-4">
-                                        {['LinkedIn', 'GitHub', 'Facebook'].map((social) => (
+                                        {[
+                                            { name: 'LinkedIn', href: 'https://www.linkedin.com/in/hieu-trung-pham-3999a2245/' },
+                                            { name: 'GitHub', href: 'https://github.com/Hieupham2510' }
+                                        ].map((social) => (
                                             <a
-                                                key={social}
-                                                href="#"
+                                                key={social.name}
+                                                href={social.href}
                                                 className="group flex items-center justify-between text-xl font-bold text-muted hover:text-foreground transition-all duration-300"
                                             >
-                                                <span>{social}</span>
+                                                <span>{social.name}</span>
                                                 <div className="h-[2px] w-0 bg-foreground group-hover:w-8 transition-all duration-500" />
                                             </a>
                                         ))}
@@ -239,9 +204,8 @@ export default function MenuOverlay({ isOpen, onClose }: { isOpen: boolean, onCl
                                 <p>© 2024 Pham Trung Hieu</p>
                             </div>
                             <div className="flex gap-4">
-                                <a href="#" className="font-bold text-xs">Li</a>
-                                <a href="#" className="font-bold text-xs">Gh</a>
-                                <a href="#" className="font-bold text-xs">Fb</a>
+                                <a href="https://www.linkedin.com/in/hieu-trung-pham-3999a2245/" className="font-bold text-xs">Li</a>
+                                <a href="https://github.com/Hieupham2510" className="font-bold text-xs">Gh</a>
                             </div>
                         </div>
                     </div>

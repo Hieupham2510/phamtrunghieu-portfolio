@@ -41,21 +41,23 @@ const AnalogClock: React.FC<AnalogClockProps> = ({ timeZone = 'Asia/Ho_Chi_Minh'
 
                 {/* Hour markers (ticks) */}
                 {[...Array(12)].map((_, i) => (
-                    <div
-                        key={i}
-                        className="absolute w-1 h-3 bg-white/20 rounded-full"
-                        style={{
-                            transform: `rotate(${i * 30}deg) translateY(-${100 - 10}px)`,
-                            transformOrigin: '50% 100%'
-                        }}
-                    />
+                    i % 3 !== 0 && (
+                        <div
+                            key={i}
+                            className="absolute w-1 h-3 bg-white/20 rounded-full"
+                            style={{
+                                transform: `rotate(${i * 30}deg) translateY(-${100 - 10}px)`,
+                                transformOrigin: '50% 100%'
+                            }}
+                        />
+                    )
                 ))}
 
                 {/* Numbers 3, 6, 9, 12 */}
-                <span className="absolute top-6 text-sm font-black text-white/40">12</span>
-                <span className="absolute right-6 text-sm font-black text-white/40">3</span>
-                <span className="absolute bottom-6 text-sm font-black text-white/40">6</span>
-                <span className="absolute left-6 text-sm font-black text-white/40">9</span>
+                <span className="absolute top-6 text-sm font-black text-primary">12</span>
+                <span className="absolute right-6 text-sm font-black text-primary">3</span>
+                <span className="absolute bottom-6 text-sm font-black text-primary">6</span>
+                <span className="absolute left-6 text-sm font-black text-primary">9</span>
 
                 {/* Hour Hand (Purple - Shorter) */}
                 <motion.div

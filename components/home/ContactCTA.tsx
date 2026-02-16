@@ -87,7 +87,7 @@ export default function ContactCTA() {
                         transition={{ delay: 0.4 }}
                     >
                         <Link
-                            href="mailto:contact@phamtrunghieu.com"
+                            href="mailto:hieupham2510tn@gmail.com"
                             className="group relative inline-flex items-center gap-4 px-10 py-5 bg-foreground text-background rounded-full text-xl font-bold uppercase tracking-wider overflow-hidden hover:bg-accent-purple hover:text-white transition-colors duration-300"
                         >
                             <span className="relative z-10">Contact Me</span>
@@ -104,9 +104,8 @@ export default function ContactCTA() {
 
                     {/* Compact Footer Links for Phase 5 scope */}
                     <div className="flex flex-wrap gap-8 md:gap-16 pt-12 items-center justify-center text-sm md:text-base font-bold uppercase tracking-widest text-muted/50">
-                        <a href="#" className="hover:text-foreground transition-colors">LinkedIn</a>
-                        <a href="#" className="hover:text-foreground transition-colors">Behance</a>
-                        <a href="#" className="hover:text-foreground transition-colors">Instagram</a>
+                        <a href="https://www.linkedin.com/in/hieu-trung-pham-3999a2245/" className="hover:text-foreground transition-colors">LinkedIn</a>
+                        <a href="https://github.com/Hieupham2510" className="hover:text-foreground transition-colors">GitHub</a>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ import ProjectCard from "@/components/ui/ProjectCard";
 import { MOCK_PROJECTS } from "@/lib/mock-data";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import TransitionLink from "@/components/ui/TransitionLink";
 
 const Projects = () => {
     return (
@@ -23,18 +24,23 @@ const Projects = () => {
                             </p>
                         </div>
 
-                        <motion.button
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.3 }}
+                        <TransitionLink
+                            href="/workfolio"
                             className="group flex items-center justify-between px-6 py-3 w-fit gap-4 border border-foreground/20 rounded-full hover:bg-foreground hover:text-background transition-all duration-300"
                         >
-                            <span className="text-sm font-bold uppercase tracking-wider">
-                                See All
-                            </span>
-                            <ArrowRight className="h-4 w-4 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
-                        </motion.button>
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.3 }}
+                                className="flex items-center gap-4"
+                            >
+                                <span className="text-sm font-bold uppercase tracking-wider">
+                                    See All
+                                </span>
+                                <ArrowRight className="h-4 w-4 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+                            </motion.div>
+                        </TransitionLink>
                     </div>
                 </div>
 
@@ -46,14 +52,14 @@ const Projects = () => {
 
                     {/* Mobile Button (Visible only on < lg) */}
                     <div className="lg:hidden mt-8 flex justify-center">
-                        <button className="group flex items-center gap-4 w-fit text-foreground hover:text-accent-purple transition-colors">
+                        <TransitionLink href="/workfolio" className="group flex items-center gap-4 w-fit text-foreground hover:text-accent-purple transition-colors">
                             <span className="text-xs font-bold uppercase tracking-[0.2em]">
                                 Explore All Projects
                             </span>
                             <div className="flex items-center justify-center h-12 w-12 rounded-full border border-muted/20 group-hover:bg-foreground group-hover:border-foreground group-hover:text-background transition-all duration-500">
                                 <ArrowRight className="h-5 w-5" />
                             </div>
-                        </button>
+                        </TransitionLink>
                     </div>
                 </div>
             </div>
